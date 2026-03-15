@@ -36,7 +36,7 @@ A Node.js + Python attendance scanner that reads student ID cards using OCR and 
 ### 1) Open project folder
 
 ```powershell
-cd 02_Web_Application
+cd MATTY-FYP
 ```
 
 ### 2) Install Node packages
@@ -52,7 +52,7 @@ python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 ```
 
-### 4) Install Python packages from `requirements.txt`
+### 4) Install Python packages
 
 ```powershell
 pip install -r requirements.txt
@@ -60,7 +60,7 @@ pip install -r requirements.txt
 
 ### 5) Add environment variables
 
-Create `.env` in `02_Web_Application`:
+Create `.env` in the `MATTY-FYP` folder:
 
 ```env
 MONGO_URI=your_mongodb_connection_string_here
@@ -68,25 +68,35 @@ MONGO_URI=your_mongodb_connection_string_here
 
 ### 6) Verify Tesseract path
 
-In `py_engine/id_scanner_v1.py`, update this if needed:
+Check this line in `py_engine/id_scanner_v1.py` and update it if needed:
 
 ```python
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 ```
 
-### 7) Start server
+### 7) Start the server
+
+```powershell
+npm start
+```
+
+Or:
 
 ```powershell
 node server.js
 ```
 
-### 8) Open app
+### 8) Open the app
 
-`http://localhost:3000`
+Open:
+
+```txt
+http://localhost:3000
+```
 
 ---
 
-## Login Credentials (Current)
+## Login Credentials (Current Demo Build)
 
 - `admin` / `admin123`
 - `csc-trial` / `trial123`
@@ -96,11 +106,11 @@ node server.js
 ## How to Use
 
 1. Log in.
-2. Scan ID card.
-3. Verify detected ID and name.
-4. Tick consent checkbox.
-5. Submit record.
-6. Open Logs to filter, export PDF, or delete record.
+2. Scan an ID card.
+3. Verify the detected student ID and name.
+4. Tick the consent checkbox.
+5. Submit the record.
+6. Open Logs to filter, export PDF, or delete a record.
 
 ---
 
@@ -113,25 +123,25 @@ node server.js
 
 ---
 
-## Using `requirements.txt`
+## Project Files
 
-- Install exact Python dependencies:
-
-```powershell
-pip install -r requirements.txt
-```
-
-- Update the file after dependency changes:
-
-```powershell
-pip freeze > requirements.txt
-```
+- `server.js` - Express server and API routes
+- `db.js` - MongoDB save, fetch, and delete logic
+- `py_engine/id_scanner_v1.py` - OCR processing
+- `public/` - frontend files
 
 ---
 
-## Troubleshooting (Quick)
+## Troubleshooting
 
-- OCR fails: check Tesseract install/path and Python packages.
-- Mongo fails: verify `MONGO_URI` in `.env`.
+- OCR fails: check Tesseract installation and Python packages.
+- MongoDB fails: verify `MONGO_URI` in `.env`.
 - Camera fails: allow browser camera permission.
+- Python script fails: ensure `python` is available in PATH.
 
+---
+
+## Notes
+
+This project stores uploaded scan images temporarily in `uploads/` and deletes them after OCR processing.
+Generated OCR debug images may be written to `processing_logs/`.

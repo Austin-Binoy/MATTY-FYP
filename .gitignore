@@ -3,26 +3,26 @@
 venv/
 ENV/
 
-# Byte-compiled / optimized / DLL files
+# Python cache/compiled
 __pycache__/
 *.py[cod]
 *$py.class
 
-# Project specific logs and processing outputs
-processing_logs/
-*.jpg
-*.png
-!test_card.jpg  # Optional: Keep your test card, or remove this line to ignore all images
+# Node
+node_modules/
 
-# IDE specific files
+# Secrets
+.env
+.env.*
+
+# Runtime/generated data
+uploads/
+processing_logs/
+
+# IDE
 .vscode/
 .idea/
 
-# System files
+# System
 .DS_Store
 Thumbs.db
-
-node_modules/
-.env
-uploads/
-processing_logs/
