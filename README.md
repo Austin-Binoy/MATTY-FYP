@@ -99,7 +99,7 @@ http://localhost:3000
 ## Login Credentials (Current Demo Build)
 
 - `admin` / `admin123`
-- `csc-trial` / `trial123`
+
 
 ---
 
